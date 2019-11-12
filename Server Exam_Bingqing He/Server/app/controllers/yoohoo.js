@@ -74,10 +74,10 @@ module.exports = function (app, config) {
 
     //Delete a gadget
     router.route('/gadgets/:id').delete((req, res, next) => {
-        logger.log('info', 'Get gadget %s', req.params.id);
+        logger.log('info', 'Delete a gadget', req.params.id);
 
         Gadget.remove({ _id: req.params.id })
-            .then(widget => {
+            .then(gadget => {
                 res.status(200).json({ msg: "A Gadget Deleted" });
             })
             .catch(error => {
