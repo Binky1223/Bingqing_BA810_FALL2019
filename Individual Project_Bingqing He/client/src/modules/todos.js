@@ -24,10 +24,6 @@ updateTodo(todo){
     this.saveTodo();  
 }
 
-async saveTodo(){    
-    await this.todo.saveTodo()  
-}
-
 async attached(){    
     await this.getTodos();  
 }
@@ -42,12 +38,9 @@ async saveTodo(){
     this.getTodos();  
 }
 
-async delete(todo){
-    await this.todo.foo();
-}
 
 async deleteTodo(todo) {
-    await this.todo.foo();
+    await this.todo.deleteTodo(todo._id);
     this.getTodos();
 }
 

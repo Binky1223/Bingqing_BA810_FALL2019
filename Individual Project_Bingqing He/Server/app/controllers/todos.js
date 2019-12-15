@@ -87,7 +87,7 @@ var express = require('express'),
     //Delete
     router.route('/todos/:id').delete((req, res, next) => {        
         logger.log('info', 'Delete todo ' + req.params.id);        
-        User.remove({ _id: req.params.id })            
+        Todo.remove({ _id: req.params.id })            
         .then(todo => {                
             res.status(200).json({ msg: "Todo Deleted" });            
         })            

@@ -10,30 +10,28 @@ export class Todo {
     }
 
     newTodo(id) {
-        this = {};
-        this = "";
-        this = "";
-        this = new Date();
-        this = "Todo";
-        this = id;
+        this.selectedTodo = {};
+        this.selectedTodo.todo = "";
+        this.selectedTodo.detail = "";
+        this.selectedTodo.dateDue = new Date();
+        this.selectedTodo.status = "Todo";
+        this.selectedTodo.userId = id;
     }
 
     async saveTodo() {
         let serverResponse;
-        if (this) {
-            if (this._id) {
-                let url = this.TODO_SERVICE + "/" + this._id;
-                serverResponse = await this.data.put(this, url);
-            } else {
-                serverResponse = await this.data.post(this, this.TODO_SERVICE);
-            }
-            return serverResponse;
+        if (this.selectedTodo) {
+          if (this.selectedTodo._id) {
+            let url = this.TODO_SERVICE + "/" + this.selectedTodo._id;
+            serverResponse = await this.data.put(this.selectedTodo, url);
+          } else {
+            serverResponse = await this.data.post(this.selectedTodo, this.TODO_SERVICE);
+          }
+          return serverResponse;
+    
         }
-    }
+      }
 
-    async deleteATodo(id){
-        await this.data.delete(this.TODO_SERVICE + '/' + id);
-    }
 
     async getTodos(userid) {
         let url = this.TODO_SERVICE + '/user/' + userid;
@@ -45,10 +43,6 @@ export class Todo {
             this.todosArray = [];
         }
     }
-
-   foo(){
-       console.log('asdlfjslf')
-   }
 
 
     async deleteTodo(id) {
